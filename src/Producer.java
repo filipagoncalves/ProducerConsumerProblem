@@ -5,6 +5,8 @@ public class Producer implements Runnable{
     private int nrOfPlates;
     private int newDish;
 
+    private int deleteThisVariable;
+
     public Producer(Container<Integer> queue, int nrOfPlates){
         this.queue = queue;
         this.nrOfPlates = nrOfPlates;
