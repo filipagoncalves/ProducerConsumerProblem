@@ -1,4 +1,6 @@
-public class Container<I> {
+import java.util.Queue;
+
+public class Container<I> implements Queue {
     private int container;
 
     public Container(int container){
