@@ -5,9 +5,13 @@ public enum Dishes {
     PLATE_4("Cannelloni"),
     PLATE_5("Veggie Lasagna");
 
-    public final String dish;
+    private final String dish;
 
-    private Dishes (String dish) {
+    Dishes (String dish) {
         this.dish = dish;
+    }
+
+    public String getDish() {
+        return dish;
     }
 }
