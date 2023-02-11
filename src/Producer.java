@@ -3,43 +3,59 @@ import java.util.Random;
 public class Producer implements Runnable{
     private Container<Integer> queue;
     private int nrOfPlates;
-    private int newDish;
+    private String name;
+    //private int newDish;
 
-    private int deleteThisVariable;
-
-    public Producer(Container<Integer> queue, int nrOfPlates){
+    public Producer(String name, Container<Integer> queue, int nrOfPlates){
         this.queue = queue;
         this.nrOfPlates = nrOfPlates;
+        this.name = name;
     }
 
-    private int randomDishGenerator(){
-        this.newDish = new Random().nextInt(5 - 1 + 1) + 1;
+   /* private int randomDishGenerator(){
+        this.
         return newDish;
-    }
+    }*/
 
-    public void newDishName(){
-        randomDishGenerator();
+    public String newDishName(){
+        int newDish = new Random().nextInt(5 - 1 + 1) + 1;
+        String dishName = "";
         switch (newDish){
             case 1:
-                System.out.println(Dishes.PLATE_1.getDish());
+                dishName = Dishes.PLATE_1.getDish();
+                //System.out.println(Dishes.PLATE_1.getDish());
                 break;
             case 2:
-                System.out.println(Dishes.PLATE_2.getDish());
+                dishName = Dishes.PLATE_2.getDish();
                 break;
             case 3:
-                System.out.println(Dishes.PLATE_3.getDish());
+                dishName = Dishes.PLATE_3.getDish();
                 break;
             case 4:
-                System.out.println(Dishes.PLATE_4.getDish());
+                dishName = Dishes.PLATE_4.getDish();
                 break;
             case 5:
-                System.out.println(Dishes.PLATE_5.getDish());
+                dishName = Dishes.PLATE_5.getDish();
                 break;
         }
+        //System.out.println("dishName = " + dishName);
+        return dishName;
     }
 
     @Override
     public void run() {
-
+        try {
+            while(this.nrOfPlates > 0){
+                //String newdish = ;
+                this.queue.addDishes(newDishName());
+                this.nrOfPlates--;
+                System.out.println(name + " has been produced.");
+                Thread.sleep(1000);
+                //return;
+            }
+            System.out.println(name + "You have all your dishes done!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
