@@ -2,14 +2,9 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class Container<I>{
-    //private int counter = 0;
     private int maxCapacity;
     private Queue<String> queue;
 
-    //private Data data;
-
-    // true if producer should wait
-    // false if consumer should wait
     private boolean listHasSpace = true;
     private boolean listIsEmpty = true;
 
