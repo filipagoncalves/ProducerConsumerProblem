@@ -4,7 +4,6 @@ public class Producer implements Runnable{
     private Container<Integer> queue;
     private int nrOfPlates;
     private String name;
-    //private int newDish;
 
     public Producer(String name, Container<Integer> queue, int nrOfPlates){
         this.queue = queue;
@@ -12,18 +11,12 @@ public class Producer implements Runnable{
         this.name = name;
     }
 
-   /* private int randomDishGenerator(){
-        this.
-        return newDish;
-    }*/
-
     public String newDishName(){
         int newDish = new Random().nextInt(5 - 1 + 1) + 1;
         String dishName = "";
         switch (newDish){
             case 1:
                 dishName = Dishes.PLATE_1.getDish();
-                //System.out.println(Dishes.PLATE_1.getDish());
                 break;
             case 2:
                 dishName = Dishes.PLATE_2.getDish();
@@ -38,7 +31,6 @@ public class Producer implements Runnable{
                 dishName = Dishes.PLATE_5.getDish();
                 break;
         }
-        //System.out.println("dishName = " + dishName);
         return dishName;
     }
 
@@ -46,12 +38,10 @@ public class Producer implements Runnable{
     public void run() {
         try {
             while(this.nrOfPlates > 0){
-                //String newdish = ;
                 this.queue.addDishes(newDishName());
                 this.nrOfPlates--;
                 System.out.println(name + " has been produced.");
-                Thread.sleep(1000);
-                //return;
+                Thread.sleep(3000);
             }
             System.out.println(name + "You have all your dishes done!");
         } catch (Exception e) {

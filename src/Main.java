@@ -4,7 +4,7 @@ public class Main {
 
         Container<Integer> queue = new Container<>(10);
 
-        Producer p1 = new Producer("producer 1: ", queue, 80);
+        Producer p1 = new Producer("producer 1: ", queue, 23);
         Thread t1 = new Thread(p1);
         t1.setName("p1");
 
@@ -16,11 +16,11 @@ public class Main {
         Thread t3 = new Thread(c1);
         t3.setName("c1");
 
-        /*Consumer c2 = new Consumer("consumer 2: ",queue, 10);
+        Consumer c2 = new Consumer("consumer 2: ",queue, 10);
         Thread t4 = new Thread(c2);
-        t4.setName("c2");*/
+        t4.setName("c2");
 
-        //t4.start();
+        t4.start();
         t2.start();
 
         t3.start();

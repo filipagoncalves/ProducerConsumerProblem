@@ -12,14 +12,13 @@ public class Consumer implements Runnable{
 
     @Override
     public void run() {
-        //Things to do
         try {
             System.out.println(name + "consumer is ON");
             while(this.dishesToBeConsumed > 0){
                 this.queue.consumeDish();
                 this.dishesToBeConsumed--;
                 System.out.println(name + "I still have  " + this.dishesToBeConsumed);
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             }
             System.out.println(name + "You have all your orders!");
 

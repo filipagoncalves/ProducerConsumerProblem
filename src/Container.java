@@ -16,7 +16,6 @@ public class Container<I>{
     public Container(int maxCapacity){
         this.maxCapacity = maxCapacity;
         this.queue = new ArrayDeque<>();
-        //data = new Data();
     }
 
     public synchronized void producerWait() {
@@ -28,7 +27,6 @@ public class Container<I>{
                 e.printStackTrace();
             }
         }
-        //System.out.println("Chef, let's fill the queue!");
         notifyAll();
     }
 
@@ -41,7 +39,6 @@ public class Container<I>{
             }
         }
         notifyAll();
-        //System.out.println("The list has plates :)");
     }
 
 
@@ -50,15 +47,12 @@ public class Container<I>{
 
         if(this.queue.size() < maxCapacity){
             this.queue.add(plateName);
-            //counter++;
             listHasSpace = true;
             listIsEmpty = false;
             System.out.println("Container: " + this.queue.toString());
             System.out.println("-".repeat(50));
         } else {
             listHasSpace = false;
-            //System.out.println("Container: Wait, the list is full!");
-            //producerWait();
         }
         producerWait();
     }
@@ -66,26 +60,19 @@ public class Container<I>{
     public synchronized void consumeDish() {
 
         if(queue.size() > 0){
-            //System.out.println("You are taking this dish: " + this.queue.peek());
             removeDishes();
-            //listHasSpace = true;
-            //return;
         } else {
             listIsEmpty = true;
             System.out.println("Container: Wait, the list is empty!");
-            //consumerWait();
         }
         consumerWait();
 
-        //System.out.println(this.queue.toString());
-        //System.out.println("-".repeat(30));
     }
 
     public synchronized void removeDishes(){
         if(this.queue.size() > 0){
             System.out.println("Container: You are taking this dish: " + this.queue.peek());
             this.queue.poll();
-            //counter--;
             System.out.println("Container: " + this.queue.toString());
         }
     }
